@@ -116,7 +116,9 @@
           if (match && currentKey) {
             const nomor = match[1];
             const jam = `${match[2]}:${match[3]}`;
-            const kode = match[4] === '5' ? 1 : 2;
+            const rawLine = line;
+            const hasTick = rawLine.includes("'");
+            const kode = hasTick ? 1 : 2;
             const nilai = parseInt(match[4]) * 1000;
             totalsByDate[currentKey] += nilai;
             outputByDate[currentKey].push(`${nomor}\t${jam}\t${kode}\t${nilai}`);
